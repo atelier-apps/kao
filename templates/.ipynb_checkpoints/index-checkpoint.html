@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>画像識別</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>画像識別</h1>
+    <div class="main">
+        <div class="area">
+            <img class="image" src="./static/uploads/{{filename}}" />
+        </div>
+        <div class="area">
+            <div class="result">
+            <div class="result-title">解析結果</div>
+                <div class="result-item"><div class="result-item-head">金正恩第一書記</div><div>{{data.kim}}</div></div>
+                <div class="result-item"><div class="result-item-head">黒電話</div><div>{{data.phone}}</div></div>
+            </div>
+        </div>
+        <div>
+            <form method ="post" enctype = "multipart/form-data">
+                <div class="area"><input type="file" name = "file"></div>
+                <div class="area"><input type = "submit" class="button" value = "判定する"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

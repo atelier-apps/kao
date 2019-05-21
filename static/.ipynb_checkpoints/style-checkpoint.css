@@ -1,0 +1,44 @@
+body{
+    background-color:#fdfdfd;
+    color:#333631;
+    margin:3em;
+}
+
+.main{
+
+}
+
+.result{
+    background-color:#f3f3f3;
+    width:20em;
+    padding:1em 1.5em;
+}
+
+.result-title{
+    font-weight:bold;
+}
+
+.result-item{
+    width:100%;
+    display:flex;
+}
+.result-item-head{
+    width:50%;
+}
+.result-item-head::after{
+    content:"：";
+}
+
+.area{
+    margin:1em 0;
+}
+
+.button{
+    background-color:#2ca9e1;
+    color:#fdfdfd;
+    padding:0.5em 1em;
+}
+
+.image{
+    height:20em;
+}

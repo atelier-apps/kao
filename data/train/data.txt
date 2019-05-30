@@ -1,0 +1,15 @@
+./data/train/kim/cutted_kim804.jpg 0
+./data/train/kim/cutted_kim805.jpg 0
+./data/train/kim/cutted_kim806.jpg 0
+./data/train/kim/cutted_kim810.jpg 0
+./data/train/kim/cutted_kim811.jpg 0
+./data/train/kim/cutted_kim812.jpg 0
+./data/train/kim/cutted_kim813.jpg 0
+./data/train/kim/cutted_kim814.jpg 0
+./data/train/kim/cutted_kim818.jpg 0
+./data/train/kim/cutted_kim826.jpg 0
+./data/train/kim/cutted_kim829.jpg 0
+./data/train/kim/cutted_kim835.jpg 0
+./data/train/kim/cutted_kim845.jpg 0
+./data/train/kim/cutted_kim847.jpg 0
+./data/train/kim/cutted_kim848.jpg 0

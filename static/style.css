@@ -30,7 +30,11 @@ body{
 }
 
 .area{
-    margin:1em 0;
+    margin:1em 0;    
+}
+
+.area-upload > input{
+    display: none;
 }
 
 .button{

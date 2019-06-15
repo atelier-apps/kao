@@ -19,8 +19,7 @@ faceCascade = cv2.CascadeClassifier(cascade_path)
 # 識別ラベルと各ラベル番号に対応する名前
 HUMAN_NAMES = {
   0: u"金正恩",
-  1: u"黒電話",
-  2: u"その他"
+  1: u"黒電話"
 }
 
 #指定した画像(img_path)を学習結果(ckpt_path)(上記参照)を用いて判定する
@@ -34,7 +33,7 @@ def evaluation(img_path):
   image = []
   img = cv2.imread(img_path)
   img = cv2.resize(img, (28, 28))
-  
+
   # 画像情報を一列にした後、0-1のfloat値にする
   image.append(img.flatten().astype(np.float32)/255.0)
   # numpy形式に変換し、TensorFlowで処理できるようにする
@@ -54,6 +53,7 @@ def evaluation(img_path):
   softmax = logits.eval()
   # 判定結果
   result = softmax[0]
+
   # 判定結果を%にして四捨五入
   rates = [round(n * 100.0, 1) for n in result]
   humans = []

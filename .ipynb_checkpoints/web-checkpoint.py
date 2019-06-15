@@ -25,7 +25,6 @@ def uploads_file():
             data["phone"]="20%"
             
             
-            
             html = render_template('index.html',filename=file.filename, data=data)
             return html
 

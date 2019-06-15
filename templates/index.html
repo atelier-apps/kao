@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>画像識別</title>
-    <script type="text/javascript" src="/static/app.js"></script>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <h1>画像識別</h1>
     <div class="main">
         <div class="area">
-            <img id = 'image' class="image" src="./static/uploads/{{filename}}" />
+            <img class="image" src="./static/uploads/{{filename}}" />
         </div>
         <div class="area">
-            <div id = "result" class="result">
+            <div class="result">
             <div class="result-title">解析結果</div>
-                <div class="result-item"><div class="result-item-head">{{data[0].name}}</div><div>{{data[0].rate}}%</div></div>
-                <div class="result-item"><div class="result-item-head">{{data[1].name}}</div><div>{{data[1].rate}}%</div></div>
-                <div class="result-item"><div class="result-item-head">{{data[2].name}}</div><div>{{data[2].rate}}%</div></div>
+                <div class="result-item"><div class="result-item-head">金正恩第一書記</div><div>{{data.kim}}</div></div>
+                <div class="result-item"><div class="result-item-head">黒電話</div><div>{{data.phone}}</div></div>
             </div>
         </div>
         <div>
-            <form action="/post" method ="post" enctype = "multipart/form-data">
-                <div class="area">
-                    <label class="area-upload"><p id = 'uploadText'></p>
-                        <input type="file" id = "file" name = "file" accept = "image/*" onchange = "isSelected()">
-                    </label>
-                </div>
-                <div class="area"><input type = "submit" id = "uploadBtn" class="button" value = "判定する"></div>
+            <form method ="post" enctype = "multipart/form-data">
+                <div class="area"><input type="file" name = "file"></div>
+                <div class="area"><input type = "submit" class="button" value = "判定する"></div>
             </form>
         </div>
     </div>

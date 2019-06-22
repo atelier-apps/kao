@@ -71,6 +71,7 @@ def evaluation(img_path):
   # 判定結果を返す
   return rank
 
+
 # コマンドラインからのテスト用
 if __name__ == '__main__':
   # このfile_pathはローカルのパス  

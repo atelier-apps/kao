@@ -2,33 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>画像識別</title>
-    <script type="text/javascript" src="/static/app.js"></script>
+    <title>Mr. 黒電話</title>
+    <script type="text/javascript" src="/static/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/static/index.js"></script>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="shortcut icon" href="./static/img/favicon.ico">
 </head>
 <body>
-    <h1>画像識別</h1>
+    <div class="title">Mr. 黒電話</div>
     <div class="main">
-        <div class="area">
-            <img id = 'image' class="image" src="./static/uploads/{{filename}}" />
-        </div>
-        <div class="area">
-            <div id = "result" class="result">
-            <div class="result-title">解析結果</div>
-                <div class="result-item"><div class="result-item-head">{{data[0].name}}</div><div>{{data[0].rate}}%</div></div>
-                <div class="result-item"><div class="result-item-head">{{data[1].name}}</div><div>{{data[1].rate}}%</div></div>
-            </div>
-        </div>
-        <div>
-            <form action="/post" method ="post" enctype = "multipart/form-data">
-                <div class="area">
-                    <label class="area-upload"><p id = 'uploadText'></p>
-                        <input type="file" id = "file" name = "file" accept = "image/*" onchange = "isSelected()">
-                    </label>
+        <form action="/post" method ="post" enctype = "multipart/form-data" class="form">
+            <div class="area center trim">
+                <div id="id_default" class="default">
+                    <img class="default-image" src="./static/img/main.png" />
+                    <div class="default-text">与えられた画像が金正恩か黒電話かをAIが判別します。</div>
                 </div>
-                <div class="area"><input type = "submit" id = "uploadBtn" class="button" value = "判定する"></div>
-            </form>
-        </div>
+                <div id="id_selected" class="selected hidden">
+                    <img id = 'image' class="image" src="" />
+                </div>
+            </div>
+            <div class="area">   
+                <div class="area">
+                    <div id='selectFile' class="button">
+                        <label>
+                            <div id='uploadText'></div>
+                            <input type="file" id = "file" name = "file" accept = "image/*" onchange = "isSelected()" class="hidden" />
+                        </label>
+                    </div>
+                </div>                
+                <div class="area">
+                    <input type = "submit" id = "uploadBtn" class="button main" value = "判定する" disabled>
+                </div>            
+            </div>
+        </form>
     </div>
+    <div class="footer">Developed by 日曜大工</div>
 </body>
 </html>

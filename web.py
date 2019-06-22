@@ -1,37 +1,67 @@
 import os
+import string
+import random
 import eval
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-DEFAULT_DATA = [{'label':0, 'name':'金正恩', 'rate':'?'},
-               {'label':1, 'name':'黒電話', 'rate':'?'},
-               {'label':2, 'name':'その他', 'rate':'?'}]
-DEFAULT_PIC = "default.jpg"
- 
+FILE_NAME_DIGIT=10
+
 # 普通に開いたとき
-@app.route('/')
-def hello():
-    html = render_template('index.html',filename=DEFAULT_PIC, data=DEFAULT_DATA)
+@app.route('/p')
+def open():
+    q_i=request.args.get("i")
+    if q_i != None:
+        print("s")
+        img_path = os.path.join(app.config['UPLOAD_FOLDER'], q_i)
+        result = eval.evaluation(img_path)
+        answer=result[0]["name"]
+        url=os.path.join(os.environ.get("APP_URL"), "p?i="+q_i)
+        detail=""
+        result_texts=[];
+        for r in result:
+            result_texts.append(r["name"]+": "+str(r["rate"])+"％")
+        detail=" / ".join(result_texts)    
+        html = render_template('result.html',filepath=img_path, detail=detail, answer=answer, url=url)
+    else:
+        html = render_template('index.html')
     return html
 
 
 # 画像をアップロードしたとき
-@app.route('/post', methods=['GET', 'POST'])
+@app.route('/post', methods=['POST'])
 def uploads_file():
-    if request.method == 'POST':
-        if request.files['file']:
-            file = request.files['file']
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            file.save(img_path)
-            result = eval.evaluation(img_path) 
-            html = render_template('index.html',filename=file.filename, data=result)
-        else:
-            html = render_template('index.html',filename=DEFAULT_PIC, data=DEFAULT_DATA)
-        return html
+    if request.files['file']:
+        file = request.files['file']
+        filename=get_file_name()
+        img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(img_path)
+        return redirect("/p?i="+filename)  
     else:
-        return redirect(url_for('index'))      
+        html = render_template('index.html')
+    return html
+
+
+def get_file_name():
+    dat = string.digits
+    name=None
+    for i in range(50):
+        n="i"+''.join([random.choice(dat) for i in range(FILE_NAME_DIGIT)])
+        exist=os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], n))
+        if exist==False:
+            name=n
+    if name ==None:
+        for i in range(FILE_NAME_DIGIT):
+            n="i"+i.zfill(FILE_NAME_DIGIT)
+            exist=os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], n))
+            if exist==False:
+                name=n
+    return name
+
+
 
 if __name__ == "__main__":
     app.run()
+
     

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr. 黒電話</title>
+    <script type="text/javascript" src="/static/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/static/result.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="shortcut icon" href="./static/img/favicon.ico">
+</head>
+<body>
+    <div class="title">Mr. 黒電話</div>
+    <div class="main">
+        <div class="area center trim">
+            <img id = 'image' class="image" src="{{filepath}}" />
+        </div>
+        <div class="area">
+            <div class="answer-area">この画像は<span class="answer">{{answer}}</span>です</div>
+            <div id = "result" class="result">
+                <span>{{detail}}</span>
+            </div>
+        </div>
+        <div>
+            <div class="area">
+                <a href="https://twitter.com/share?url={{url}}&text=AI画像判定（{{detail}}）&hashtags=Mr.黒電話" class="button main" data-show-count="false">
+                    <img class="button-icon" src="./static/img/twitter.png" />結果をツイート
+                </a>
+            </div>
+            <div class="area">
+                <div class="button" onclick="window.location='/p';">別の画像で試す</div>
+            </div>   
+        </div>
+    </div>
+    <div class="footer">Developed by 日曜大工</div>
+</body>
+</html>

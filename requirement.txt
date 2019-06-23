@@ -1,8 +1,0 @@
-Click==7.0
-Flask==0.12.2
-itsdangerous==1.1.0
-Jinja2==2.10.1
-MarkupSafe==1.1.1
-Werkzeug==0.15.4
-[33mYou are using pip version 9.0.2, however version 19.1.1 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.[0m

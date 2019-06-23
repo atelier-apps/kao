@@ -1,4 +1,4 @@
 flask==1.0.3
-numpy==1.8.0
+numpy==1.16.3
 opencv-python==3.4.5.20
 tensorflow==1.13.1

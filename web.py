@@ -17,7 +17,9 @@ def open():
         img_path = os.path.join(app.config['UPLOAD_FOLDER'], q_i)
         result = eval.evaluation(img_path)
         answer=result[0]["name"]
-        url=os.path.join(os.environ.get("APP_URL"), "p?i="+q_i)
+        if os.environ.get("APP_URL") ==None:
+            os.environ["APP_URL"] = "dummyURL"
+        url=os.environ.get('APP_URL')+"/p?i="+q_i
         detail=""
         result_texts=[];
         for r in result:
@@ -59,9 +61,5 @@ def get_file_name():
                 name=n
     return name
 
-
-
 if __name__ == "__main__":
     app.run()
-
-    

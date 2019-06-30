@@ -5,7 +5,11 @@ import random
 import eval
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
-UPLOAD_FOLDER = './static/uploads'
+
+UPLOAD_FOLDER = os.environ.get("DATABASE_URL")
+if UPLOAD_FOLDER ==None:
+    UPLOAD_FOLDER = './static/uploads'
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 FILE_NAME_DIGIT=10
 

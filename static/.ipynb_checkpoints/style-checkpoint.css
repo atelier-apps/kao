@@ -156,7 +156,8 @@ body{
 }
 
 .default-image{
-    max-height:25rem;
+    width:95%;
+    
 }
 
 .hidden{

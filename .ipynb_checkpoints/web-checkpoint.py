@@ -1,4 +1,5 @@
 import os
+import glob
 import string
 import random
 import eval
@@ -9,7 +10,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 FILE_NAME_DIGIT=10
 
 # 普通に開いたとき
-@app.route('/p')
+@app.route('/p', methods=['GET'])
 def open():
     q_i=request.args.get("i")
     if q_i != None:
@@ -17,7 +18,9 @@ def open():
         img_path = os.path.join(app.config['UPLOAD_FOLDER'], q_i)
         result = eval.evaluation(img_path)
         answer=result[0]["name"]
-        url=os.path.join(os.environ.get("APP_URL"), "p?i="+q_i)
+        if os.environ.get("APP_URL") ==None:
+            os.environ["APP_URL"] = "dummyURL"
+        url=os.environ.get('APP_URL')+"/p?i="+q_i
         detail=""
         result_texts=[];
         for r in result:
@@ -26,6 +29,16 @@ def open():
         html = render_template('result.html',filepath=img_path, detail=detail, answer=answer, url=url)
     else:
         html = render_template('index.html')
+    return html
+
+# 管理用
+@app.route('/management', methods=['GET'])
+def open_managemant_page():
+    if os.environ.get("MANAGEMENT_CODE") ==request.args.get("management_code"):
+        items=glob.glob(UPLOAD_FOLDER+"/*")
+        html = render_template('management.html', items=items)
+    else:
+        html = None
     return html
 
 
@@ -59,9 +72,9 @@ def get_file_name():
                 name=n
     return name
 
-
-
 if __name__ == "__main__":
     app.run()
-
     
+
+
+

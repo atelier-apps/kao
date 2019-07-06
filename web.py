@@ -17,12 +17,13 @@ def open():
         img_path = os.path.join(app.config['UPLOAD_FOLDER'], q_i)
         result = eval.evaluation(img_path)
         answer=result[0]["name"]
+        print("テスト")
         url=os.path.join(os.environ.get("APP_URL"), "p?i="+q_i)
         detail=""
         result_texts=[];
         for r in result:
             result_texts.append(r["name"]+": "+str(r["rate"])+"％")
-        detail=" / ".join(result_texts)    
+        detail=" / ".join(result_texts)
         html = render_template('result.html',filepath=img_path, detail=detail, answer=answer, url=url)
     else:
         html = render_template('index.html')
@@ -37,7 +38,7 @@ def uploads_file():
         filename=get_file_name()
         img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(img_path)
-        return redirect("/p?i="+filename)  
+        return redirect("/p?i="+filename)
     else:
         html = render_template('index.html')
     return html
@@ -63,5 +64,3 @@ def get_file_name():
 
 if __name__ == "__main__":
     app.run()
-
-    

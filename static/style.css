@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color:#fafafa;
+    background-color:#f0ede6;
     color:#333631;
     font-size:3em;
     font-family:sans-serif;
@@ -16,13 +16,27 @@ body{
     box-sizing:border-box;
 }
 
+@media screen and (min-width: 1200px) {
+    body{
+        font-size:1.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .main{
+        width:700px;
+    }
+}
+
+
 .footer{
-    color:gray;
+    color:#dddddd;
     position:fixed;
     bottom:0;
     left:0;
     width:100%;
-    background-color:#eeeeee;
+    background-color:#52484d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +47,7 @@ body{
 
 
 .title{
-    background-color:#444444;
+    background-color:#3A3035;
     color:#dddddd;
     width:100%;
     display: flex;
@@ -41,12 +55,14 @@ body{
     align-items: center;
     padding:0.5em;
     box-sizing:border-box;
+    border-bottom: 0.5em solid #52484d; 
 }
+
 
 .answer-area{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
 }
 
 .answer{
@@ -64,6 +80,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 0 1em 0;
 }
 
 .result-title{
@@ -97,7 +114,9 @@ body{
 .default{
     text-align:justify;
     font-size:0.8em;
-    height:40rem;
+    min-height:40vh;
+    height:40vh;
+    max-height:40vh;
     width:100%;
     display: flex;
     justify-content: center;
@@ -111,7 +130,14 @@ body{
 }
 
 .selected{
-    height:40rem;
+    min-height:40vh;
+    height:40vh;
+    max-height:40vh;
+}
+
+.area-404{
+    width:100%;
+    margin:1em 0;
 }
 
 
@@ -119,6 +145,7 @@ body{
 
 
 .button{
+    cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
     font-size:100%;
@@ -140,7 +167,9 @@ body{
     background-color:#2ca9e1;
 }
 
-.button:disabled {
+
+.button:disabled, .button.disabled{
+    cursor: not-allowed;
     background-color:#d9d9d9;
     color:#bbbbbb;
 }
@@ -150,15 +179,19 @@ body{
     margin:0 0.5em 0 0;
 }
 
+/* 画像 */
+
 .image{
-    min-height:40rem;
-    max-height:40rem;
+    min-height:40vh;
+    height:40vh;
+    max-height:40vh;
 }
 
 .default-image{
-    width:95%;
-    
+    width:100%;
 }
+
+/* 共通 */
 
 .hidden{
     display: none;

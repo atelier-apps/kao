@@ -77,7 +77,7 @@ def uploads_file():
     
     if request.files['file']:
         file = request.files['file']
-        ip = request.environ['REMOTE_ADDR'];
+        ip = request.remote_addr;
         user_agent = request.environ['HTTP_USER_AGENT'];
         date=datetime.datetime.today()
         

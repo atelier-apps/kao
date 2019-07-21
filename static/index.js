@@ -1,6 +1,3 @@
-
-const messageForSelectFile = '画像を選択する'
-const messageForReselectFile = '画像を選びなおす'
 const default_image = './static/img/main.png'
 const id_upload_btn = 'uploadBtn'
 const id_select_btn = 'selectFile'
@@ -9,14 +6,26 @@ const id_file = 'file'
 const id_image = 'image'
 const id_default='id_default'
 const id_selected='id_selected'
+const id_textdef="id_textdef"
+
+var textdef=null;
+
 
 window.onload = function () {
-    
-    $("#"+id_image).attr("src",default_image);
-    $("#"+id_upload_btn).attr("disabled",true);
-    $("#"+id_select_btn).addClass("main");
-    $("#"+id_upload_text).text(messageForSelectFile);
+    textdefText=$("#"+id_textdef).val()
+    textdef=JSON.parse(textdefText)
+    console.log(textdef)
 }
+
+$(function(){
+    if (window.name != "re_load") {
+        location.reload();
+        window.name = "re_load";
+    }else{
+        window.name = "";
+    }
+});
+
 
 function isSelected() {
     const file = document.getElementById(id_file)
@@ -25,14 +34,14 @@ function isSelected() {
         $("#"+id_selected).addClass("hidden");
         $("#"+id_upload_btn).attr("disabled",true);
         $("#"+id_select_btn).addClass("main");
-        $("#"+id_upload_text).text(messageForSelectFile);
-        $("#"+id_image).attr("src",default_image);
+        $("#"+id_upload_text).text(textdef["select_image"]);
+        $("#"+id_image).attr("src",null);
     } else {
         $("#"+id_default).addClass("hidden");
         $("#"+id_selected).removeClass("hidden");
         $("#"+id_upload_btn).attr("disabled",false);
         $("#"+id_select_btn).removeClass("main");
-        $("#"+id_upload_text).text(messageForReselectFile);
+        $("#"+id_upload_text).text(textdef["reselect_image"]);
         $("#"+id_image).attr("src",window.URL.createObjectURL(file.files[0]));
     }
 }

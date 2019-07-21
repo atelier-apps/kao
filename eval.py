@@ -18,8 +18,8 @@ faceCascade = cv2.CascadeClassifier(cascade_path)
 
 # 識別ラベルと各ラベル番号に対応する名前
 HUMAN_NAMES = {
-  0: u"金正恩",
-  1: u"黒電話"
+  0: "kim",
+  1: "phone"
 }
 
 #指定した画像(img_path)を学習結果(ckpt_path)(上記参照)を用いて判定する
@@ -27,8 +27,6 @@ def evaluation(img_path):
   ckpt_path = CKPT_PATH
   # GraphのReset(らしいが、何をしているのかよくわかっていない…)
   tf.reset_default_graph()
-  # ファイルを開く
-  f = open(img_path, 'r')
   # データを入れる配列
   image = []
   img = cv2.imread(img_path)

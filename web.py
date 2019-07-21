@@ -31,7 +31,7 @@ STORAGE_URL = os.environ.get("STORAGE_URL")
 # アプリのURL
 APP_URL = os.environ.get("APP_URL")
 # アップロードフォルダ
-UPLOAD_FOLDER = '/static/uploads'
+UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 

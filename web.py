@@ -31,9 +31,9 @@ STORAGE_URL = os.environ.get("STORAGE_URL")
 # アプリのURL
 APP_URL = os.environ.get("APP_URL")
 # アップロードフォルダ（HEROKUでは相対パスがきかない）
-UPLOAD_FOLDER = os.path.join(os.path.dirname( os.path.abspath(__file__) ),'static/uploads')
+UPLOAD_FOLDER = './static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-print(UPLOAD_FOLDER)
 
 # 普通に開いたとき
 @app.route('/k', methods=['GET'])
@@ -90,7 +90,7 @@ def uploads_file():
                 id=record["id"]
                 
                 # 画像を一時保存して解析結果を得る（一時保存しなくても良い方法があるなら、上記のIDを得る処理は下記のDB保存処理と統合したい）
-                img_path = os.path.join(UPLOAD_FOLDER, str(id))
+                img_path = os.path.join(app.config['UPLOAD_FOLDER'], str(id))
                 file.save(img_path)
                 result=eval.evaluation(img_path)
                 os.remove(img_path)

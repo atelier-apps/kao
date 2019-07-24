@@ -41,8 +41,9 @@ def acsess_main_page():
     language=request.args.get("l")
     q_i=request.args.get("i")
     
-    if language ==None:
+    if language == None:
         language = "en"
+    
     textdef=td.get_textdef(language)
 
     if q_i != None: 

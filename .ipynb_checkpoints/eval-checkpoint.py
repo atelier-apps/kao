@@ -73,6 +73,6 @@ def evaluation(img_path):
 # コマンドラインからのテスト用
 if __name__ == '__main__':
   # このfile_pathはローカルのパス  
-  file_path = r'C:\Users\81909\Pictures\Screenshots\test_eval.jpg'
+  file_path = r'./data/test/kim/kim0.jpg'
   result = evaluation(file_path)
   print(result)

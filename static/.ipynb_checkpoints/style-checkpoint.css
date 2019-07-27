@@ -4,11 +4,15 @@
 }
 
 body{
-    background-color:#f0ede6;
-    color:#333631;
+    background-color:#f0f0f0;
+    color:#524a4a;
     font-size:3em;
     font-family:sans-serif;
     margin:0;
+    background-image:
+	 repeating-linear-gradient(-30deg,
+	 #eeeeee, #eeeeee 7.5px,
+	 transparent 0, transparent 15px);
 }
 
 .main{
@@ -36,7 +40,7 @@ body{
     bottom:0;
     left:0;
     width:100%;
-    background-color:#52484d;
+    background-color:#b5122e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +51,7 @@ body{
 
 
 .title{
-    background-color:#3A3035;
+    background-color:#CE1031;
     color:#dddddd;
     width:100%;
     display: flex;
@@ -55,7 +59,12 @@ body{
     align-items: center;
     padding:0.5em;
     box-sizing:border-box;
-    border-bottom: 0.5em solid #52484d; 
+    border-bottom: 0.5em solid #b5122e; 
+}
+
+.title-image{
+    height:2.5em;
+    margin-top:0.4em;
 }
 
 
@@ -67,7 +76,7 @@ body{
 
 .answer{
     font-weight:bold;
-    color:#2ca9e1;
+    color:#CE1031;
     font-size:1.5em;
     padding:0 0.2em;
 }
@@ -150,6 +159,7 @@ body{
     -webkit-appearance: none;
     font-size:100%;
     width:100%;
+    height:3em;
     background-color:#aaaaaa;
     color:#fdfdfd;
     padding:0.7em 1em;
@@ -164,7 +174,7 @@ body{
 }
 
 .button.main{
-    background-color:#2ca9e1;
+    background-color:#CE1031;
 }
 
 

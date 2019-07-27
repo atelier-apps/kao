@@ -13,5 +13,5 @@ def init_tables():
 
 # データベース接続
 def get_connection():
-    return psycopg2.connect(DATABASE_URL, sslmode='require')
+    return psycopg2.connect(DATABASE_URL)
 

@@ -33,6 +33,8 @@ APP_URL = os.environ.get("APP_URL")
 # アップロードフォルダ
 UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# 画像を「その他」と判断する割合
+CONDITIONS_RATE = 80.0
 
 
 # 普通に開いたとき
@@ -59,7 +61,10 @@ def acsess_main_page():
             for r in result:
                 result_texts.append(textdef[r["name"]]+": "+str(r["rate"])+"％")
             detail=" / ".join(result_texts)
-            answer=textdef[result[0]["name"]]
+            if result[0]["rate"] >= CONDITIONS_RATE:
+                answer=textdef[result[0]["name"]]
+            else:
+                answer=textdef["other"]
             img_path=STORAGE_URL+record["file_id"]
             url=urllib.parse.quote(APP_URL+"/k?l="+language+"&i="+record["file_id"])
             html = render_template('result.html',language=language,filepath=img_path, detail=detail, answer=answer, url=url,textdef=textdef,textdef_text=json.dumps(textdef))

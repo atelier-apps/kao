@@ -33,7 +33,6 @@ APP_URL = os.environ.get("APP_URL")
 # アップロードフォルダ
 UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 # 画像を「その他」と判断する割合
 CONDITIONS_RATE = 80.0
 

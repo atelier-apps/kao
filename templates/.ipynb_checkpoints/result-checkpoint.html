@@ -14,7 +14,9 @@
     <div class="title"><img class="title-image" src="./static/img/title.png" alt="{{textdef.title}}" /></div>
     <div class="main">
         <div class="area center trim">
-            <img id = 'image' class="image" src="{{filepath}}" />
+            <div class="selected">
+                <img id = 'image' class="image" src="{{filepath}}" />
+            </div>
         </div>
         <div class="area">
             <div class="answer-area"><span>{{textdef.answer_description}}</span><span class="answer">{{answer}}</span></div>
@@ -25,7 +27,7 @@
         <div>
             <div class="area">
                 <a href="https://twitter.com/share?url={{url}}&text={{textdef.subtitle}}（{{detail}}）&hashtags={{textdef.hashtag}}" class="button main" data-show-count="false" target="_blank">
-                    <img class="button-icon" src="./static/img/twitter.png" />{{textdef.tweet}}
+                    {{textdef.tweet}}
                 </a>
             </div>
             <div class="area">

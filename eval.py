@@ -64,7 +64,8 @@ def evaluation(img_path):
       'rate': rate
     })
   # パーセンテージの高い順にソート
-  rank = sorted(humans, key=lambda x: x['rate'], reverse=True)
+  # 追記：コマンドラインを利用した、ハイパーパラメータ確認の際は、x['rate']をx['label']に変更する
+  rank = sorted(humans, key=lambda x: x['rabel'], reverse=True)
 
   # 判定結果を返す
   return rank
@@ -72,7 +73,13 @@ def evaluation(img_path):
 
 # コマンドラインからのテスト用
 if __name__ == '__main__':
-  # このfile_pathはローカルのパス  
-  file_path = r'./data/test/kim/kim0.jpg'
-  result = evaluation(file_path)
-  print(result)
+    # それぞれハイパーパラメータテスト画像のフォルダパス。確認したい画像のパスを、file_path=の後に置く
+    kim_path="./hyper-test-pics/kim/kim"
+    tel_path="./hyper-test-pics/tel/tel"
+    other_path="./hyper-test-pics/other/other"
+    image_count = 100
+    for i in range(image_count):
+        # このfile_pathはローカルのパス
+        file_path = (other_path + str(i) + '.jpg')
+        result = evaluation(file_path)
+        print(result)

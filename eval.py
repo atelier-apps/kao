@@ -19,7 +19,8 @@ faceCascade = cv2.CascadeClassifier(cascade_path)
 # 識別ラベルと各ラベル番号に対応する名前
 HUMAN_NAMES = {
   0: "kim",
-  1: "phone"
+  1: "phone",
+  2: "other"  
 }
 
 #指定した画像(img_path)を学習結果(ckpt_path)(上記参照)を用いて判定する

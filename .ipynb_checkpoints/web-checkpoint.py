@@ -33,6 +33,8 @@ APP_URL = os.environ.get("APP_URL")
 # アップロードフォルダ
 UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# タイトルファイル名
+TITLE_IMAGE={"en":"title_en.png","ja":"title.png"}
 
 
 # 普通に開いたとき
@@ -62,9 +64,9 @@ def acsess_main_page():
             answer=textdef[result[0]["name"]]
             img_path=STORAGE_URL+record["file_id"]
             url=urllib.parse.quote(APP_URL+"/k?l="+language+"&i="+record["file_id"])
-            html = render_template('result.html',language=language,filepath=img_path, detail=detail, answer=answer, url=url,textdef=textdef,textdef_text=json.dumps(textdef))
+            html = render_template('result.html',language=language,filepath=img_path, detail=detail, answer=answer, url=url,textdef=textdef,textdef_text=json.dumps(textdef), title_image=TITLE_IMAGE[language])
     else:
-        html = render_template('index.html',language=language,textdef=textdef,textdef_text=json.dumps(textdef))
+        html = render_template('index.html',language=language,textdef=textdef,textdef_text=json.dumps(textdef), title_image=TITLE_IMAGE[language])
     return html
 
 
@@ -111,16 +113,16 @@ def uploads_file():
         return redirect("/k?l="+language+"&i="+file_id)
     
     textdef=td.get_textdef(language)
-    html = render_template('index.html',language=language,textdef=textdef,textdef_text=json.dumps(textdef))
+    html = render_template('index.html',language=language,textdef=textdef,textdef_text=json.dumps(textdef),title_image=TITLE_IMAGE[language])
     return html
 
 
-# 普通に開いたとき
+# 画像がないとき
 @app.route('/image_missing', methods=['GET'])
 def acsess_image_missing_page():
     language=request.args.get("l")
     textdef=td.get_textdef(language)
-    html = render_template('image_missing.html',textdef=textdef)
+    html = render_template('image_missing.html',textdef=textdef,title_image=TITLE_IMAGE[language])
     return html
     
 

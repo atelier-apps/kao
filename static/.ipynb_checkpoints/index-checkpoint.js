@@ -45,3 +45,8 @@ function isSelected() {
         $("#"+id_image).attr("src",window.URL.createObjectURL(file.files[0]));
     }
 }
+
+function disableSubmit() { 
+    $("#"+id_upload_btn).attr("disabled",true);
+    return true;
+}

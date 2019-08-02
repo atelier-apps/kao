@@ -26,7 +26,7 @@ flags.DEFINE_string('train_dir', './data', 'Directory to put the training data.'
 # 学習訓練の試行回数
 flags.DEFINE_integer('max_steps', 50, 'Number of steps to run trainer.')
 # 1回の学習で何枚の画像を使うか
-flags.DEFINE_integer('batch_size', 100, 'Batch size Must divide evenly into the dataset sizes.')
+flags.DEFINE_integer('batch_size', 200, 'Batch size Must divide evenly into the dataset sizes.')
 # 学習率、小さすぎると学習が進まないし、大きすぎても誤差が収束しなかったり発散したりしてダメとか。繊細
 flags.DEFINE_float('learning_rate', 1e-4, 'Initial learning rate.')
 

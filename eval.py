@@ -75,13 +75,17 @@ def evaluation(img_path):
 if __name__ == '__main__':
     # それぞれハイパーパラメータテスト画像のフォルダパス。確認したい画像のパスを、file_path=の後に置く
 
-    label=1
-    
     test_data={0:"./hyper-test-pics/kim/kim",1:"./hyper-test-pics/tel/tel",2:"./hyper-test-pics/other/other"}
-    
+    print("test_resultファイルに書き込み開始")
+    f = open('./test_result.txt', 'w')
     image_count = 100
     for i in range(image_count):
-        # このfile_pathはローカルのパス
-        file_path = (test_data[label] + str(i) + '.jpg')
-        result = evaluation(file_path)
-        print(result[0]["label"]==label)
+        result={}
+        print("進捗:"+str(i))
+        for label in test_data:
+            file_path = (test_data[label] + str(i) + '.jpg')
+            r = evaluation(file_path)
+            result[label]=str(r[0]["label"]==label)
+        f.write(result[1]+"\t"+result[0]+"\t"+result[2]+"\n")
+    f.close()
+    print("test_resultファイルに書き込み完了")

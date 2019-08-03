@@ -73,6 +73,7 @@ def evaluation(img_path):
 
 # コマンドラインからのテスト用
 if __name__ == '__main__':
+<<<<<<< HEAD
     # それぞれハイパーパラメータテスト画像のフォルダパス。確認したい画像のパスを、file_path=の後に置く
 
     test_data={0:"./hyper-test-pics/kim/kim",1:"./hyper-test-pics/tel/tel",2:"./hyper-test-pics/other/other"}
@@ -89,3 +90,9 @@ if __name__ == '__main__':
         f.write(result[1]+"\t"+result[0]+"\t"+result[2]+"\n")
     f.close()
     print("test_resultファイルに書き込み完了")
+=======
+  # このfile_pathはローカルのパス  
+  file_path = r'./data/test/kim/kim0.jpg'
+  result = evaluation(file_path)
+  print(result)
+>>>>>>> fe666f71a469d3e634a49cc33bcdea0303a82e12

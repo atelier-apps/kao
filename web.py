@@ -37,6 +37,7 @@ APP_URL = os.environ.get("APP_URL")
 # アップロードフォルダ
 UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # タイトルファイル名
 TITLE_IMAGE={"en":"title_en.png","ja":"title.png"}
 
@@ -94,11 +95,12 @@ def acsess_main_page():
             # データベースに該当レコードがなかったら
             return redirect("/image_missing?l="+language)
         else:
-            # 
+            
             result=record["result"]
             result_texts=[];
             for r in result:
                 result_texts.append(textdef[r["name"]]+": "+str(r["rate"])+"％")
+
                 
             detail=" / ".join(result_texts)
             

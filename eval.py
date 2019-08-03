@@ -65,8 +65,7 @@ def evaluation(img_path):
       'rate': rate
     })
   # パーセンテージの高い順にソート
-  # 追記：コマンドラインを利用した、ハイパーパラメータ確認の際は、x['rate']をx['label']に変更する
-  rank = sorted(humans, key=lambda x: x['label'], reverse=True)
+  rank = sorted(humans, key=lambda x: x['rate'], reverse=True)
 
   # 判定結果を返す
   return rank
@@ -75,12 +74,18 @@ def evaluation(img_path):
 # コマンドラインからのテスト用
 if __name__ == '__main__':
     # それぞれハイパーパラメータテスト画像のフォルダパス。確認したい画像のパスを、file_path=の後に置く
-    kim_path="./hyper-test-pics/kim/kim"
-    tel_path="./hyper-test-pics/tel/tel"
-    other_path="./hyper-test-pics/other/other"
+
+    test_data={0:"./hyper-test-pics/kim/kim",1:"./hyper-test-pics/tel/tel",2:"./hyper-test-pics/other/other"}
+    print("test_resultファイルに書き込み開始")
+    f = open('./test_result.txt', 'w')
     image_count = 100
     for i in range(image_count):
-        # このfile_pathはローカルのパス
-        file_path = (other_path + str(i) + '.jpg')
-        result = evaluation(file_path)
-        print(result)
+        result={}
+        print("進捗:"+str(i))
+        for label in test_data:
+            file_path = (test_data[label] + str(i) + '.jpg')
+            r = evaluation(file_path)
+            result[label]=str(r[0]["label"]==label)
+        f.write(result[1]+"\t"+result[0]+"\t"+result[2]+"\n")
+    f.close()
+    print("test_resultファイルに書き込み完了")

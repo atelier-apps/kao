@@ -12,6 +12,7 @@ ja={
     "answer_description":"この画像は",
     "kim":"金正恩",
     "phone":"黒電話",
+    "other":"その他",
     "hashtag":"Mr.黒電話",
     "image_missing":"画像は見つかりませんでした。"
 }
@@ -24,11 +25,12 @@ en={
     "judge":"Judge",
     "judging":"Judging...",
     "tweet":"Tweet this result",
-    "description":"This AI judges if it is Kim or Phone.",
-    "try_again":"Try with another image",
+    "description":"The AI judges if it is Kim or Phone.",
+    "try_again":"Try another image",
     "answer_description":"This is ",
-    "kim":"Kim Jong-un",
+    "kim":"Kim",
     "phone":"Phone",
+    "other":"Other",
     "hashtag":"Mr.Phone",
     "image_missing":"Image Not Found."
 }

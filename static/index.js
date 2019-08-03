@@ -14,7 +14,6 @@ var textdef=null;
 window.onload = function () {
     textdefText=$("#"+id_textdef).val()
     textdef=JSON.parse(textdefText)
-    console.log(textdef)
 }
 
 $(function(){
